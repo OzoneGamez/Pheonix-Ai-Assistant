@@ -7,6 +7,11 @@ import os
 import requests
 import time
 
+#contacts
+contactsPeople = ["test","hello"]
+contactsNumbers = ["1234","4321"]
+
+
 url = ""
 path = r'"C:\\Users\\HC Vex Robotics\\Desktop\\'
 
@@ -53,6 +58,14 @@ while True:
         webbrowser.open_new(url)
         url = ""
 
+    #text someone (not implemented right now)
+    elif "pheonix can you please text" in spoken_text:
+        question = spoken_text.split("pheonix can you please text", 1)[1].strip()
+        question = question.split(" ")
+        if question[1] in contactsPeople:
+            number = contactsNumbers[contactsPeople.index(question[1])]
+            question = question[1].strip
+
     #webscrape a website
     elif "pheonix can you get me some information on" in spoken_text:
         print("this is working")
@@ -98,14 +111,15 @@ while True:
 #calling
 #timers
 #reminder
+#email
 
 #system integration
 #discord integration
-
+#spotify
 
 #glasses integrtiaon
 #play stuff on netflix
 #play youutbe
-#webscraping
-#integrat my browser
+#webscraping???
+#integrat my browser???
 #add screenshot to my browser
