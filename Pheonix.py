@@ -61,10 +61,6 @@ while True:
     #text someone (not implemented right now)
     elif "pheonix can you please text" in spoken_text:
         question = spoken_text.split("pheonix can you please text", 1)[1].strip()
-        question = question.split(" ")
-        if question[1] in contactsPeople:
-            number = contactsNumbers[contactsPeople.index(question[1])]
-            question = question[1].strip
 
     #webscrape a website
     elif "pheonix can you get me some information on" in spoken_text:
@@ -108,10 +104,8 @@ while True:
 
 
 
-#calling
 #timers
 #reminder
-#email
 
 #system integration
 #discord integration
@@ -121,5 +115,5 @@ while True:
 #play stuff on netflix
 #play youutbe
 #webscraping???
-#integrat my browser???
+#integrat my browser
 #add screenshot to my browser
