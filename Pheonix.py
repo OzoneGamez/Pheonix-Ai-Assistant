@@ -111,6 +111,8 @@ while True:
 #discord integration
 #spotify
 
+#remote access and control
+
 #glasses integrtiaon
 #play stuff on netflix
 #play youutbe
