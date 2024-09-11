@@ -119,3 +119,7 @@ while True:
 #webscraping???
 #integrat my browser
 #add screenshot to my browser
+
+
+
+#installer
