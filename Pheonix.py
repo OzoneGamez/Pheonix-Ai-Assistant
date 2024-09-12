@@ -103,13 +103,15 @@ while True:
 
 
 
+#gui
+#settings
+
 
 #timers
 #reminder
 
 #system integration
 #discord integration
-#spotify
 
 #remote access and control
 

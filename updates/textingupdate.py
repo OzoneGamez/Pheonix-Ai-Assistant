@@ -1,12 +1,12 @@
-#import pywhatkit as kit
+import pywhatkit as kit
 
 
-contactsPeople = ["test","hello"]
-contactsNumbers = ["1234","4321"]
+contactsPeople = ["Owen","hello"]
+contactsNumbers = ["+12895011922","4321"]
 
 
 
-spoken_text = "pheonix can you please text hello nerd how are you"
+spoken_text = "pheonix can you please text Owen nerd how are you"
 
 if "pheonix can you please text" in spoken_text:
     question = spoken_text.split("pheonix can you please text", 1)[1].strip()
@@ -16,5 +16,5 @@ if "pheonix can you please text" in spoken_text:
     message = ' '.join(question)
     print(message+number)
 
-    #kit.sendwhatmsg_instantly(number, message)
+    kit.sendwhatmsg_instantly(number, message)
 

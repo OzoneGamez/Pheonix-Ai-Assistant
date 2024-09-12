@@ -36,8 +36,11 @@ if "pheonix can you make a new contact" in spoken_text:
     spoken_text.split(" ")
     spoken_text = "".join(spoken_text)
     number = spoken_text
+    number = ("+"+number)
     tts_engine.say("whats their email")
     recognize_speech()
+    spoken_text.split(" ")
+    spoken_text = "".join(spoken_text)
     email = spoken_text
     contactsNames = open('C:\\Users\\HC Vex Robotics\\Documents\\GitHub\\Pheonix-Ai-Assistant\\Contacts\\names.txt', "a").write(name)
     contactsNumbers = open('C:\\Users\\HC Vex Robotics\\Documents\\GitHub\\Pheonix-Ai-Assistant\\Contacts\\numbers.txt', "a").write(number)
