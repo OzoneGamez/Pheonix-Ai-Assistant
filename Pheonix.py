@@ -6,6 +6,16 @@ import webbrowser
 import os
 import requests
 import time
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
+
+#Spotify app credentials
+SPOTIPY_CLIENT_ID = '9679d900d0c24cae9fd6ae542e62edb8'
+SPOTIPY_CLIENT_SECRET = '5f7bbf60d04545e0891f9694d03ad5dd'
+SPOTIPY_REDIRECT_URI = 'http://localhost:8888/callback/'
+scope = "user-modify-playback-state user-read-playback-state"
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET, redirect_uri=SPOTIPY_REDIRECT_URI, scope=scope))
+
 
 #contacts
 contactsPeople = ["test","hello"]
@@ -22,6 +32,22 @@ model = genai.GenerativeModel('gemini-1.5-flash')
 # Initialize the speech recognition and TTS engine
 recognizer = sr.Recognizer()
 tts_engine = pyttsx3.init()
+
+
+#function to play a song 
+def play_song(song_name):
+    results = sp.search(q=song_name, type='track', limit=1)
+    track = results['tracks']['items'][0]
+    track_uri = track['uri']
+
+    # Get the device
+    devices = sp.devices()
+    if devices['devices']:
+        device_id = devices['devices'][0]['id']
+        sp.start_playback(device_id=device_id, uris=[track_uri])
+        print(f"Playing: {track['name']} by {track['artists'][0]['name']}")
+    else:
+        print("No active device found")
 
 # Function to recognize speech and return text
 def recognize_speech():
@@ -61,6 +87,12 @@ while True:
     #text someone (not implemented right now)
     elif "pheonix can you please text" in spoken_text:
         question = spoken_text.split("pheonix can you please text", 1)[1].strip()
+
+    #play song on spotify
+    elif "phoenix can you play" in spoken_text and "on spotify" in spoken_text:
+        question = spoken_text.split("phoenix can you play", 1)[1].strip()
+        print(question)
+        play_song(question)
 
     #webscrape a website
     elif "pheonix can you get me some information on" in spoken_text:
@@ -103,25 +135,16 @@ while True:
 
 
 
+#add in other updates
+#play stuff on netflix
+#play youtube
+#webscraping???
 #gui
 #settings
-
-
 #timers
 #reminder
-
-#system integration
+#remote access and control through website
 #discord integration
-
-#remote access and control
-
-#glasses integrtiaon
-#play stuff on netflix
-#play youutbe
-#webscraping???
-#integrat my browser
-#add screenshot to my browser
-
-
-
+#integrat into my browser
 #installer
+#make own model
